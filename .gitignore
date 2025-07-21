@@ -211,3 +211,6 @@ approach.txt
 todo.txt
 CLAUDE.md
 app/app.db
+plan
+.cursor/rules/
+.claude/
