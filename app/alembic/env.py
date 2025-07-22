@@ -24,7 +24,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from database import Base
-from models import example_item
+from models import Agent, Conversation, Message, PromptTemplate, Tool
 
 
 target_metadata = Base.metadata
