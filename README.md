@@ -1,108 +1,73 @@
 # Self-Hosted AI Agents
 
-A flexible, local LLM-powered agent system with custom tool capabilities, built on FastAPI.
+A local LLM-powered agent system with custom tool capabilities, built on FastAPI.
 
 ## Overview
 
-This system provides a complete infrastructure for creating, managing, and deploying AI agents that can interact with users through conversations and execute custom tools. It's designed to run locally with support for various LLM providers including Ollama, Mistral, and OpenAI-compatible APIs.
+This system allows you to create and manage AI agents that can have conversations and execute custom tools. It's designed to run locally with support for various LLM providers.
 
-## Architecture
+## Core Components
 
-The system follows a modular architecture with the following core components:
+- **Agent Management**: Create and configure AI agents with different capabilities
+- **Conversation Engine**: Handle agent conversations and message history
+- **Tool Registry**: Extensible system for agent tools and actions
+- **LLM Provider**: Support for local model providers (Ollama)
 
-- **API Endpoints**: FastAPI-based REST API with authentication and request validation
-- **Conversation Engine**: Central orchestrator managing message processing and context
-- **Agent Management**: Agent storage, configuration, and capability management
-- **Tool Registry**: Tool discovery, execution, and permission management
-- **Prompt Template Component**: Context assembly and template rendering
-- **LLM Provider**: Abstract interface supporting multiple model providers
-- **Database**: SQLAlchemy-based persistence layer with SQLite/PostgreSQL support
+## Getting Started
 
-## Features
-
-- **Multi-Agent Support**: Create and manage multiple AI agents with different capabilities
-- **Custom Tools**: Extensible tool system for agent actions
-- **Local LLM Support**: Works with Ollama and other local model providers
-- **Conversation Management**: Persistent conversation history and context
-- **Template System**: Flexible prompt templating with variable substitution
-- **REST API**: Complete HTTP API for integration with external systems
-- **Docker Support**: Containerised deployment ready
-
-## Quick Start
-
-### Development Setup
-
-1. **Install Dependencies**
+1. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Database Setup**
+2. **Set up database**
    ```bash
    cd app
    alembic upgrade head
    ```
 
-3. **Run the Application**
+3. **Run the application**
    ```bash
    uvicorn main:app --reload
    ```
 
-4. **Access the API**
-   - API Documentation: http://localhost:8000/docs
-   - Health Check: http://localhost:8000/health
+4. **View API documentation**
+   - http://localhost:8000/docs
 
-### Docker Deployment
+## Current Status
 
-```bash
-docker-compose up -d
-```
+This project is in active development:
 
-## Implementation Status
+- ✅ Database models and core structure
+- ✅ Modular configuration system with LLM provider support
+- 🚧 Agent management system
+- ⏳ Conversation handling
+- ⏳ Tool execution framework
 
-This project is currently in development following a phased implementation approach:
+See `plan/implementation-roadmap.txt` for detailed development phases.
 
-- ✅ **Phase 1**: Foundation (Database models, basic configuration)
-- 🚧 **Phase 2**: Agent Management (CRUD operations for agents)
-- ⏳ **Phase 3**: Basic Conversation System (Message handling)
-- ⏳ **Phase 4**: Tool System Integration (Tool execution framework)
-- ⏳ **Phase 5**: Enhanced Features (Multiple LLM providers, monitoring)
-- ⏳ **Phase 6**: Advanced Features (Real-time, streaming, plugins)
+## API Overview
 
-## API Endpoints
-
-### Agents
-- `GET /agents` - List all agents
-- `POST /agents` - Create new agent
-- `GET /agents/{id}` - Get specific agent
-- `PUT /agents/{id}` - Update agent
-- `DELETE /agents/{id}` - Delete agent
-
-### Conversations
-- `POST /conversations` - Start new conversation
-- `POST /conversations/{id}/messages` - Send message
-- `GET /conversations/{id}/messages` - Get conversation history
-
-### Tools
-- `GET /tools` - List available tools
-- `POST /tools/{tool_name}/execute` - Execute tool directly
+- Agent management: `/agents`
+- Conversations: `/conversations`  
+- Tools: `/tools`
 
 ## Configuration
 
-The system uses environment variables for configuration:
+The system uses a modular configuration approach with environment variable support:
 
-- `DATABASE_URL`: Database connection string
-- `LLM_PROVIDER`: Primary LLM provider (ollama, openai, mistral)
-- `LLM_MODEL`: Model name to use
-- `API_KEY`: Authentication key for API access
+**Application Settings** (prefix: `APP__`):
+- `APP__DATABASE_URL`: Database connection (defaults to SQLite)
+- `APP__LLM_PROVIDER`: Selected LLM provider (ollama, openai, etc.)
+- `APP__DEBUG`: Enable debug mode
+- `APP__LOG_LEVEL`: Logging level
 
-## Contributing
+**LLM Provider Settings**:
+Each LLM provider has its own configuration prefix and parameters. For example, Ollama uses `LLAMA__` prefix for settings like API base URL, model name, temperature, and provider-specific options.
 
-1. Review the implementation roadmap in `plan/implementation-roadmap.txt`
-2. Follow the existing code patterns and architecture
-3. Add tests for new functionality
-4. Update documentation for API changes
+**Logging** (prefix: `LOGGING__`):
+- `LOGGING__LOG_LEVEL`: Logging level
+- `LOGGING__LOG_FILE`: Log file location
+- `LOGGING__LOG_TO_CONSOLE`: Enable console logging
 
-## License
-
-MIT License - see LICENSE file for details.
+The modular design allows easy addition of new LLM providers without affecting existing configurations.
