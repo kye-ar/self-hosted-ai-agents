@@ -44,8 +44,6 @@ This project is in active development:
 - ⏳ Conversation handling
 - ⏳ Tool execution framework
 
-See `plan/implementation-roadmap.txt` for detailed development phases.
-
 ## API Overview
 
 - Agent management: `/agents`
