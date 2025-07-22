@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text, Boolean, DateTime, JSON
+from sqlalchemy.orm import relationship
 from datetime import datetime
 from database import Base
 
@@ -34,6 +35,7 @@ class Agent(Base):
     available_tools = Column(JSON, default=list)
     
     # Control flags
+    conversations = relationship("Conversation", back_populates="agent")
     is_active = Column(Boolean, default=True, index=True)
 
     # Audit fields

@@ -28,7 +28,7 @@ class Message(Base):
     tool_call_id = Column(String(100), nullable=True)
 
     # Message metadata
-    metadata = Column(JSON, default=dict)
+    message_metadata = Column(JSON, default=dict)
 
     # Processing status
     is_processed = Column(Boolean, default=True)
