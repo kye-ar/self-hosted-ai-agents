@@ -2,7 +2,8 @@
 
 from abc import ABC, abstractmethod
 from typing import Dict, Any
-from pydantic import BaseSettings, Field, validator
+from pydantic_settings import BaseSettings
+from pydantic import Field, validator
 
 class BaseLLMProviderSettings(BaseSettings, ABC):
     """

@@ -40,9 +40,11 @@ This project is in active development:
 
 - ✅ Database models and core structure
 - ✅ Modular configuration system with LLM provider support
+- ✅ LLM provider base class and Llama/Ollama integration
 - 🚧 Agent management system
 - ⏳ Conversation handling
 - ⏳ Tool execution framework
+
 
 ## API Overview
 
