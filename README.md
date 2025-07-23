@@ -45,7 +45,6 @@ This project is in active development:
 - ⏳ Conversation handling
 - ⏳ Tool execution framework
 
-The LLM provider system is now functional with support for Ollama and includes connection validation, text generation, and error handling.
 
 ## API Overview
 
