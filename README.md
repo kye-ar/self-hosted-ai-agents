@@ -40,11 +40,12 @@ This project is in active development:
 
 - ✅ Database models and core structure
 - ✅ Modular configuration system with LLM provider support
+- ✅ LLM provider base class and Llama/Ollama integration
 - 🚧 Agent management system
 - ⏳ Conversation handling
 - ⏳ Tool execution framework
 
-See `plan/implementation-roadmap.txt` for detailed development phases.
+The LLM provider system is now functional with support for Ollama and includes connection validation, text generation, and error handling.
 
 ## API Overview
 
