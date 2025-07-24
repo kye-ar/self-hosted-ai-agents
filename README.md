@@ -41,16 +41,21 @@ This project is in active development:
 - ✅ Database models and core structure
 - ✅ Modular configuration system with LLM provider support
 - ✅ LLM provider base class and Llama/Ollama integration
-- 🚧 Agent management system
+- ✅ Agent management system with full CRUD operations
 - ⏳ Conversation handling
 - ⏳ Tool execution framework
 
 
 ## API Overview
 
-- Agent management: `/agents`
-- Conversations: `/conversations`  
-- Tools: `/tools`
+- **Agent management**: `/agents` - Create, read, update, delete agents
+  - `POST /agents` - Create new agent
+  - `GET /agents` - List agents with pagination
+  - `GET /agents/{id}` - Get specific agent
+  - `PUT /agents/{id}` - Update agent
+  - `DELETE /agents/{id}` - Delete agent
+- **Conversations**: `/conversations` - (Coming soon)
+- **Tools**: `/tools` - (Coming soon)
 
 ## Configuration
 
