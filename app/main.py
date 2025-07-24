@@ -1,8 +1,11 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from config import settings
+from config import app_settings as settings
 from database import engine, Base
 from auth import optional_auth, verify_api_key
+
+# Route imports
+from routes import agent_router
 
 # Create the database tables
 Base.metadata.create_all(bind=engine)
@@ -24,6 +27,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
+# Route registration
+app.include_router(agent_router)
 
 # Health check endpoint (no auth required)
 @app.get("/health")
